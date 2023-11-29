@@ -1,0 +1,18 @@
+from .db import db, environment, SCHEMA, add_prefix_for_prod
+
+class Recipe(db.Model):
+    __tablename__ = 'recipes'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(75), nullable=False)
+    description = db.Column(db.String(255))
+    prepTime = db.Column(db.String(10))
+    totalTime = db.Column(db.String(10))
+    servings = db.Column(db.Integer, nullable=False)
+    directions = db.Column(db.Text)
+    notes = db.Column(db.Text)
+    source = db.Column(db.String(150))
+    img = db.column(db.String(75))
