@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import Recipe
 
-user_routes = Blueprint('users', __name__)
+recipe_routes = Blueprint('recipes', __name__)

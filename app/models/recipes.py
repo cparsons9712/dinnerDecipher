@@ -18,6 +18,10 @@ class Recipe(db.Model):
     img_url = db.Column(db.String(255))
     ingredients = db.Column(db.Text)
 
+    #Relationships
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+
     def to_dict(self):
         return {
             'id': self.id,
