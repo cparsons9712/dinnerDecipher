@@ -12,7 +12,23 @@ class Recipe(db.Model):
     prepTime = db.Column(db.String(10))
     totalTime = db.Column(db.String(10))
     servings = db.Column(db.Integer, nullable=False)
-    directions = db.Column(db.Text)
+    directions = db.Column(db.Text, nullable=False)
     notes = db.Column(db.Text)
     source = db.Column(db.String(150))
-    img = db.column(db.String(75))
+    img_url = db.Column(db.String(255))
+    ingredients = db.Column(db.Text)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'prepTime': self.prepTime,
+            'totalTime': self.totalTime,
+            'servings': self.servings,
+            'directions': self.directions,
+            'notes': self.notes,
+            'source': self.source,
+            'img_url': self.img_url,
+            'ingredients': self.ingredients,
+        }
