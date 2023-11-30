@@ -14,6 +14,7 @@ flask-login==0.6.2
 flask-migrate==4.0.2
 flask-sqlalchemy==3.0.2
 flask-wtf==1.1.1
+faker==9.10.2
 greenlet==2.0.1
 gunicorn==20.1.0
 itsdangerous==2.1.2
