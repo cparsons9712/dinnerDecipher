@@ -33,3 +33,21 @@ def create_recipe():
         return recipe.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@recipe_routes.route('<recipe_id>', methods=['PUT'])
+@login_required
+def update_recipe(recipe_id):
+    """
+    Updates an instance of a recipe in the database
+    """
+    form = RecipeForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    recipe = Recipe.query.get_or_404(recipe_id)
+
+    if form.validate_on_submit():
+        
+        form.populate_obj(recipe)
+        recipe.user_id = current_user.id
+        db.session.add(recipe)
+        db.session.commit()
+        return recipe.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
