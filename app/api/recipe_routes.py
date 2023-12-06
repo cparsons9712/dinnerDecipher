@@ -8,7 +8,7 @@ from .auth_routes import validation_errors_to_error_messages
 recipe_routes = Blueprint('recipes', __name__)
 
 @recipe_routes.route('/')
-@login_required
+# @login_required
 def all_recipes():
     """
     Query for all recipes in the database
@@ -52,7 +52,7 @@ def update_recipe(recipe_id):
         return recipe.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@recipe_routes.route('<recipe_id>', methods=['PUT'])
+@recipe_routes.route('<recipe_id>', methods=['DELETE'])
 @login_required
 def delete_recipe(recipe_id):
     """
