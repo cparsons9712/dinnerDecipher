@@ -25,7 +25,8 @@ def seed_recipes():
         notes="For an extra chewy texture, chill the cookie dough in the refrigerator for at least 24 hours before baking.",
         source="https://www.allrecipes.com/recipe/10813/best-chocolate-chip-cookies/",
         img_url="https://www.example.com/chocolate-chip-cookies.jpg",
-        ingredients="1 cup (2 sticks) unsalted butter, softened; 3/4 cup granulated sugar; 3/4 cup packed brown sugar; 2 large eggs; 1 teaspoon vanilla extract; 1 teaspoon baking soda; 2 teaspoons hot water; 1/2 teaspoon salt; 3 cups all-purpose flour; 2 cups semisweet chocolate chips"
+        ingredients="1 cup (2 sticks) unsalted butter, softened; 3/4 cup granulated sugar; 3/4 cup packed brown sugar; 2 large eggs; 1 teaspoon vanilla extract; 1 teaspoon baking soda; 2 teaspoons hot water; 1/2 teaspoon salt; 3 cups all-purpose flour; 2 cups semisweet chocolate chips",
+        user_id = 1
     )
 
     three = Recipe(
@@ -38,7 +39,8 @@ def seed_recipes():
         notes="For a vegan option, use plant-based Parmesan or nutritional yeast instead of traditional Parmesan cheese.",
         source="https://www.example.com/vegetarian-spaghetti-bolognese/",
         img_url="https://www.example.com/vegetarian-bolognese.jpg",
-        ingredients="16 oz spaghetti; 2 tbsp olive oil; 1 onion, finely chopped; 3 cloves garlic, minced; 1 lb plant-based protein (e.g., soy crumbles or lentils); 28 oz crushed tomatoes; 2 tbsp tomato paste; 1 cup vegetable broth; 2 tsp Italian seasoning; Salt and pepper to taste; Fresh basil and Parmesan cheese for garnish"
+        ingredients="16 oz spaghetti; 2 tbsp olive oil; 1 onion, finely chopped; 3 cloves garlic, minced; 1 lb plant-based protein (e.g., soy crumbles or lentils); 28 oz crushed tomatoes; 2 tbsp tomato paste; 1 cup vegetable broth; 2 tsp Italian seasoning; Salt and pepper to taste; Fresh basil and Parmesan cheese for garnish",
+        user_id = 1
     )
 
     four = Recipe(
@@ -51,7 +53,8 @@ def seed_recipes():
         notes="Adjust the level of spiciness by adding more or less jalapeño, depending on your preference.",
         source="https://www.example.com/mango-avocado-salsa/",
         img_url="https://www.example.com/mango-avocado-salsa.jpg",
-        ingredients="1 ripe mango, diced; 1 ripe avocado, diced; 1/4 cup red onion, finely chopped; 2 tbsp fresh cilantro, chopped; 1 jalapeño, seeds removed and finely chopped; Juice of 1 lime; Salt and pepper to taste"
+        ingredients="1 ripe mango, diced; 1 ripe avocado, diced; 1/4 cup red onion, finely chopped; 2 tbsp fresh cilantro, chopped; 1 jalapeño, seeds removed and finely chopped; Juice of 1 lime; Salt and pepper to taste",
+        user_id = 1
     )
 
     five = Recipe(
@@ -64,7 +67,8 @@ def seed_recipes():
         notes="Feel free to customize the vegetables based on your preferences. Add a protein of your choice for an extra boost.",
         source="https://www.example.com/quinoa-roasted-vegetable-salad/",
         img_url="https://www.example.com/quinoa-salad.jpg",
-        ingredients="1 cup quinoa; 2 cups diced mixed vegetables (bell peppers, cherry tomatoes, zucchini, red onion); 2 tbsp olive oil; Salt and pepper to taste; 1 can chickpeas, drained and rinsed; 1/2 cup feta cheese, crumbled; Balsamic vinaigrette for dressing"
+        ingredients="1 cup quinoa; 2 cups diced mixed vegetables (bell peppers, cherry tomatoes, zucchini, red onion); 2 tbsp olive oil; Salt and pepper to taste; 1 can chickpeas, drained and rinsed; 1/2 cup feta cheese, crumbled; Balsamic vinaigrette for dressing",
+        user_id = 1
     )
 
     six = Recipe(
@@ -77,10 +81,17 @@ def seed_recipes():
         notes="Try marinating the chicken in advance for more intense flavor. Serve with your favorite side dishes or sliced over a salad.",
         source="https://www.example.com/grilled-lemon-herb-chicken/",
         img_url="https://www.example.com/grilled-chicken.jpg",
-        ingredients="4 boneless, skinless chicken breasts; 1/4 cup olive oil; Juice of 2 lemons; 3 cloves garlic, minced; 1 tsp dried rosemary; 1 tsp dried thyme; Salt and pepper to taste"
+        ingredients="4 boneless, skinless chicken breasts; 1/4 cup olive oil; Juice of 2 lemons; 3 cloves garlic, minced; 1 tsp dried rosemary; 1 tsp dried thyme; Salt and pepper to taste",
+        user_id = 1
     )
 
-    db.session.add(one, two, three, four, five, six)
+    db.session.add(one)
+    db.session.add(two)
+    db.session.add(three)
+    db.session.add(four)
+    db.session.add(five)
+    db.session.add(six)
+
     db.session.commit()
 
 
