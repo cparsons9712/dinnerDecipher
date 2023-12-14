@@ -24,7 +24,7 @@ def seed_recipes():
         directions="Preheat oven to 350°F (175°C). In a large bowl, cream together the butter, white sugar, and brown sugar until smooth. Beat in the eggs one at a time, then stir in the vanilla. Dissolve baking soda in hot water. Add to the batter along with salt. Stir in flour and chocolate chips. Drop by large spoonfuls onto ungreased pans. Bake for about 10 minutes in the preheated oven, or until edges are nicely browned.",
         notes="For an extra chewy texture, chill the cookie dough in the refrigerator for at least 24 hours before baking.",
         source="https://www.allrecipes.com/recipe/10813/best-chocolate-chip-cookies/",
-        img_url="https://www.example.com/chocolate-chip-cookies.jpg",
+        img_url="https://handletheheat.com/wp-content/uploads/2019/01/soft-chocolate-chip-cookies-SQUARE.png",
         ingredients="1 cup (2 sticks) unsalted butter, softened; 3/4 cup granulated sugar; 3/4 cup packed brown sugar; 2 large eggs; 1 teaspoon vanilla extract; 1 teaspoon baking soda; 2 teaspoons hot water; 1/2 teaspoon salt; 3 cups all-purpose flour; 2 cups semisweet chocolate chips",
         user_id = 1
     )
@@ -38,7 +38,7 @@ def seed_recipes():
         directions="Cook spaghetti according to package instructions. In a large skillet, heat olive oil over medium heat. Add onion, garlic, and plant-based protein. Cook until onions are soft and protein is browned. Stir in crushed tomatoes, tomato paste, vegetable broth, Italian seasoning, salt, and pepper. Simmer for 15-20 minutes. Serve the sauce over cooked spaghetti. Garnish with fresh basil and grated Parmesan.",
         notes="For a vegan option, use plant-based Parmesan or nutritional yeast instead of traditional Parmesan cheese.",
         source="https://www.example.com/vegetarian-spaghetti-bolognese/",
-        img_url="https://www.example.com/vegetarian-bolognese.jpg",
+        img_url="https://schoolnightvegan.com/wp-content/uploads/2022/02/vegan-bolognese-17.jpg",
         ingredients="16 oz spaghetti; 2 tbsp olive oil; 1 onion, finely chopped; 3 cloves garlic, minced; 1 lb plant-based protein (e.g., soy crumbles or lentils); 28 oz crushed tomatoes; 2 tbsp tomato paste; 1 cup vegetable broth; 2 tsp Italian seasoning; Salt and pepper to taste; Fresh basil and Parmesan cheese for garnish",
         user_id = 1
     )
@@ -52,7 +52,7 @@ def seed_recipes():
         directions="In a bowl, combine diced mango, diced avocado, red onion, cilantro, and jalapeño. Drizzle with lime juice and gently toss to combine. Season with salt and pepper to taste. Refrigerate for at least 30 minutes before serving to allow the flavors to meld. Serve with tortilla chips or as a topping for grilled dishes.",
         notes="Adjust the level of spiciness by adding more or less jalapeño, depending on your preference.",
         source="https://www.example.com/mango-avocado-salsa/",
-        img_url="https://www.example.com/mango-avocado-salsa.jpg",
+        img_url="https://www.skinnytaste.com/wp-content/uploads/2010/02/Avocado-_-Mango-Salsa-9-500x500.jpg",
         ingredients="1 ripe mango, diced; 1 ripe avocado, diced; 1/4 cup red onion, finely chopped; 2 tbsp fresh cilantro, chopped; 1 jalapeño, seeds removed and finely chopped; Juice of 1 lime; Salt and pepper to taste",
         user_id = 1
     )
@@ -66,7 +66,7 @@ def seed_recipes():
         directions="Preheat oven to 400°F (200°C). Toss diced vegetables (bell peppers, cherry tomatoes, zucchini, and red onion) with olive oil, salt, and pepper. Spread on a baking sheet and roast for 25-30 minutes until vegetables are tender. In a separate pot, cook quinoa according to package instructions. Allow quinoa and roasted vegetables to cool. In a large bowl, combine quinoa, roasted vegetables, chickpeas, and feta cheese. Drizzle with balsamic vinaigrette and toss to combine. Serve chilled.",
         notes="Feel free to customize the vegetables based on your preferences. Add a protein of your choice for an extra boost.",
         source="https://www.example.com/quinoa-roasted-vegetable-salad/",
-        img_url="https://www.example.com/quinoa-salad.jpg",
+        img_url="https://minimalistbaker.com/wp-content/uploads/2022/10/Kale-Salad-with-Crispy-Quinoa-SQUARE.jpg",
         ingredients="1 cup quinoa; 2 cups diced mixed vegetables (bell peppers, cherry tomatoes, zucchini, red onion); 2 tbsp olive oil; Salt and pepper to taste; 1 can chickpeas, drained and rinsed; 1/2 cup feta cheese, crumbled; Balsamic vinaigrette for dressing",
         user_id = 1
     )
@@ -80,7 +80,7 @@ def seed_recipes():
         directions="In a bowl, whisk together olive oil, lemon juice, garlic, rosemary, thyme, salt, and pepper to create the marinade. Place chicken breasts in a resealable plastic bag and pour the marinade over them. Seal the bag and refrigerate for at least 2 hours, or overnight for best flavor. Preheat grill to medium-high heat. Remove chicken from the marinade and grill for 6-7 minutes per side, or until the internal temperature reaches 165°F (74°C). Let the chicken rest for a few minutes before serving.",
         notes="Try marinating the chicken in advance for more intense flavor. Serve with your favorite side dishes or sliced over a salad.",
         source="https://www.example.com/grilled-lemon-herb-chicken/",
-        img_url="https://www.example.com/grilled-chicken.jpg",
+        img_url="https://thewholecook.com/wp-content/uploads/2020/05/Lemon-Herb-Grilled-Chicken-by-The-Whole-Cook-Horizontal.jpg",
         ingredients="4 boneless, skinless chicken breasts; 1/4 cup olive oil; Juice of 2 lemons; 3 cloves garlic, minced; 1 tsp dried rosemary; 1 tsp dried thyme; Salt and pepper to taste",
         user_id = 1
     )
