@@ -21,6 +21,9 @@ function RecipeList() {
         return ingredients.split(';')
 
     }
+    const formattInstructions = instr => {
+        return instr.split('.')
+    }
 
 
 
@@ -33,10 +36,23 @@ function RecipeList() {
                     <h2>{r.name}</h2>
                     <p>{r.description}</p>
                     <img src={r.img_url} className="recipeImage" alt={r.name}/>
-                    {formattIngredients(r.ingredients).map((r)=>{
-                        return (<li>{r}</li>)
-                    })}
-                    <p>{r.directions}</p>
+                    <div className="ingredients">
+                        <h3>Ingredients</h3>
+                        {formattIngredients(r.ingredients).map((r)=>{
+                            return (<li>{r}</li>)
+                        })}
+                    </div>
+                    <div className="instructions">
+                        <h3>Instructions</h3>
+                        <ol>
+                            {formattInstructions(r.directions).map((i)=>{
+                                return <li>{i}</li>
+                            })}
+                        </ol>
+
+                        
+                    </div>
+
                 </div>
             )
         })}
