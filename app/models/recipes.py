@@ -12,7 +12,7 @@ class Recipe(db.Model):
     prepTime = db.Column(db.String(10))
     totalTime = db.Column(db.String(10))
     servings = db.Column(db.Integer, nullable=False)
-    directions = db.Column(db.Text, nullable=False)
+    # directions = db.Column(db.Text, nullable=False)
     notes = db.Column(db.Text)
     source = db.Column(db.String(150))
     img_url = db.Column(db.String(255))
@@ -20,6 +20,7 @@ class Recipe(db.Model):
 
     #Relationships
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    directions = db.relationship('Direction', backref='recipe')
 
 
     def to_dict(self):
