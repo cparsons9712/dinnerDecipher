@@ -21,6 +21,7 @@ class Recipe(db.Model):
     #Relationships
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     directions = db.relationship('Direction', backref='recipe')
+    ingredients = db.relationship('RecipeIngredient', backref = 'recipe')
 
 
     def to_dict(self):
