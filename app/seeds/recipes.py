@@ -12,7 +12,7 @@
 #         notes = "Make Ahead & Freezing Instructions: You can make the cookie dough and chill it in the refrigerator for up to 3 days (step 3). Unbaked cookie dough balls freeze well for up to 3 months. Read my tips and tricks on how to freeze cookie dough. Baked and cooled cookies freeze well for up to 3 months. Thaw at room temperature. Keep in mind that after thawing, the chocolate may look streaky on top, or have condensation on the surface. Still fine to eat!",
 #         source = "https://sallysbakingaddiction.com/marshmallow-surprise-hot-cocoa-cookies/#tasty-recipes-125132",
 #         img_url="https://sallysbakingaddiction.com/wp-content/uploads/2023/11/marshmallow-hot-cocoa-cookies.jpg",
-#         ingredients = "1/2 cup (8 Tbsp; 113g) unsalted butter, softened to room temperature ; 1/2 cup (100g) granulated sugar; 1/2 cup (100g) packed light or dark brown sugar; 1 large egg, at room temperature; 1 teaspoon pure vanilla extract; 1 and 1/2 cups (188g) all-purpose flour (spooned & leveled); 1/3 cup (27g) natural unsweetened cocoa powder; 1/4 cup (40g) dry hot cocoa mix; 1 teaspoon baking soda; 1/8 teaspoon salt; 2 teaspoons (10ml) milk (any kind, dairy or nondairy, is fine); Topping; 10 large marshmallows, cut in half; 8 ounces (226g) semi-sweet chocolate, finely chopped (see Note)",
+#
 #         user_id = 1
 #     )
 #     two = Recipe(
@@ -119,10 +119,19 @@ def seed_recipes():
 
     # Seed ingredients for Recipe 2
     ingredients_two = [
-        RecipeIngredient(recipeId=2, name="unsalted butter, softened", quantity=226, unit="g"),
-        # Add other ingredients here...
+        RecipeIngredient(recipeId=2, name="unsalted butter", quantity=1, unit="cup"),
+        RecipeIngredient(recipeId=2, name="granulated sugar", quantity=3/4, unit="cup"),
+        RecipeIngredient(recipeId=2, name="brown sugar", quantity=3/4, unit="cup"),
+        RecipeIngredient(recipeId=2, name="eggs", quantity=2, unit="whole"),
+        RecipeIngredient(recipeId=2, name="vanilla extract", quantity= 1, unit="teaspoon"),
+        RecipeIngredient(recipeId=2, name="baking soda", quantity=1, unit="teaspoon"),
+        RecipeIngredient(recipeId=2, name="hot water", quantity=2, unit="teaspoons"),
+        RecipeIngredient(recipeId=2, name="salt", quantity=1/2, unit="teaspoon"),
+        RecipeIngredient(recipeId=2, name="all-purpose flour", quantity=3, unit="cups"),
+        RecipeIngredient(recipeId=2, name="semisweet chocolate chips", quantity=2, unit="cups"),
     ]
-
+#     directions="Preheat oven to 350°F (175°C). In a large bowl, cream together the butter, white sugar, and brown sugar until smooth. Beat in the eggs one at a time, then stir in the vanilla. Dissolve baking soda in hot water. Add to the batter along with salt. Stir in flour and chocolate chips. Drop by large spoonfuls onto ungreased pans. Bake for about 10 minutes in the preheated oven, or until edges are nicely browned.",
+# #         notes="For an extra chewy texture, chill the cookie dough in the refrigerator for at least 24 hours before baking.",
     # Seed directions for Recipe 2
     directions_two = [
         Direction(recipeId=2, text="Preheat oven to 350°F (175°C). In a large bowl, cream together the butter, white sugar, and brown sugar until smooth."),
