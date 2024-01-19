@@ -80,13 +80,28 @@ def seed_recipes():
         RecipeIngredient(recipeId=1, name="milk", quantity=2, unit="teaspoons"),
         RecipeIngredient(recipeId=1, name="large marshmellow", quantity=10, unit="whole"),
         RecipeIngredient(recipeId=1, name="semi-sweet chocolate", quantity=8, unit="ounces")
-
     ]
+
 
     # Seed directions for Recipe 1
     directions_one = [
-        Direction(recipeId=1, text="In a large bowl using a handheld or stand mixer..."),
-        # Add other directions here...
+        Direction(recipeId=1, text="In a large bowl using a handheld or stand mixer fitted with a paddle attachment, beat the butter, granulated sugar, and brown sugar together on medium high speed until fluffy and light in color, about 3 minutes."),
+        Direction(recipeId=1, text="Add the egg and vanilla extract, and then beat on high speed until combined. Scrape down the sides and bottom of the bowl as needed."),
+        Direction(recipeId=1, text="In a separate bowl, whisk the flour, cocoa powder, hot cocoa mix, baking soda, and salt together until combined."),
+        Direction(recipeId=1, text="Add the dry ingredients to the bowl with the wet ingredients. Beat on low until combined. The cookie dough will be quite thick."),
+        Direction(recipeId=1, text=" Finally, beat in the milk. The cookie dough will be thick and sticky. Cover dough tightly and chill in the refrigerator for at least 2 hours and up to 3 days. Chilling is imperative for this sticky cookie dough."),
+        Direction(recipeId=1, text="Preheat oven to 350°F (177°C). Line large baking sheets with parchment paper or silicone baking mats. Set aside."),
+        Direction(recipeId=1, text=" Remove cookie dough from the refrigerator. Scoop and roll dough, a heaping 1 Tablespoon (about 25-26g) each, into balls. Arrange 2 inches apart on the baking sheets"),
+        Direction(recipeId=1, text="Bake the cookies for just 10 minutes"),
+        Direction(recipeId=1, text="Remove the cookies from the oven and lightly press a marshmallow half into the tops of each cookie."),
+        Direction(recipeId=1, text="Return them to the oven and bake for 2 more minutes."),
+        Direction(recipeId=1, text="Remove from the oven and, using the back of a spoon, gently press down on the marshmallow to slightly flatten it out."),
+        Direction(recipeId=1, text="Cool cookies on the baking sheet for 10 minutes, and then transfer cookies to a wire rack to cool completeley"),
+        Direction(recipeId=1, text="melt the chocolate: You can melt the chocolate in a double boiler or the microwave. If using the microwave, place the chopped chocolate in a medium heat-proof bowl. Microwave for 20-second increments, stirring after each increment until completely melted and smooth."),
+        Direction(recipeId=1, text="Spoon melted chocolate over each cooled marshmallow-topped cookie. (When covering with melted chocolate, I usually put the cookies back on a baking sheet, or you can just keep them on the wire rack.) Chocolate sets at room temperature in 30-60 minutes."),
+        Direction(recipeId=1, text=" Once chocolate has set, you can easily store, stack, and transport the cookies. Cover leftover cookies tightly and store at room temperature for up to 1 week"),
+
+
     ]
 
     # Seed for Recipe 2: Classic Chocolate Chip Cookies
