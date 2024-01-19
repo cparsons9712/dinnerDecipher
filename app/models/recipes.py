@@ -16,7 +16,7 @@ class Recipe(db.Model):
     notes = db.Column(db.Text)
     source = db.Column(db.String(150))
     img_url = db.Column(db.String(255))
-    ingredients = db.Column(db.Text, nullable=False)
+    # ingredients = db.Column(db.Text, nullable=False)
 
     #Relationships
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
