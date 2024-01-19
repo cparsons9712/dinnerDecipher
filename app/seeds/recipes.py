@@ -130,12 +130,25 @@ def seed_recipes():
         RecipeIngredient(recipeId=2, name="all-purpose flour", quantity=3, unit="cups"),
         RecipeIngredient(recipeId=2, name="semisweet chocolate chips", quantity=2, unit="cups"),
     ]
-#     directions="Preheat oven to 350°F (175°C). In a large bowl, cream together the butter, white sugar, and brown sugar until smooth. Beat in the eggs one at a time, then stir in the vanilla. Dissolve baking soda in hot water. Add to the batter along with salt. Stir in flour and chocolate chips. Drop by large spoonfuls onto ungreased pans. Bake for about 10 minutes in the preheated oven, or until edges are nicely browned.",
-# #         notes="For an extra chewy texture, chill the cookie dough in the refrigerator for at least 24 hours before baking.",
+
     # Seed directions for Recipe 2
     directions_two = [
-        Direction(recipeId=2, text="Preheat oven to 350°F (175°C). In a large bowl, cream together the butter, white sugar, and brown sugar until smooth."),
-        # Add other directions here...
+        Direction(recipeId=2, text="Preheat oven to 350°F (175°C)."),
+        Direction(recipeId=2, text="In a large bowl, cream together the butter, white sugar, and brown sugar until smooth."),
+        Direction(recipeId=2, text="Beat in the eggs one at a time, then stir in the vanilla"),
+        Direction(recipeId=2, text="Dissolve baking soda in hot water. Add to the batter along with salt."),
+        Direction(recipeId=2, text=" Stir in flour and chocolate chips"),
+        Direction(recipeId=2, text="Drop by large spoonfuls onto ungreased pans."),
+        Direction(recipeId=2, text="Bake for about 10 minutes in the preheated oven, or until edges are nicely browned."),
+        Direction(recipeId=2, text=""),
+        Direction(recipeId=2, text=""),
+        Direction(recipeId=2, text=""),
+        Direction(recipeId=2, text=""),
+        Direction(recipeId=2, text=""),
+        Direction(recipeId=2, text=""),
+        Direction(recipeId=2, text=""),
+
+
     ]
 
     db.session.add(one)
