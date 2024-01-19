@@ -10,8 +10,6 @@ class RecipeForm(FlaskForm):
     prepTime = StringField()
     totalTime = StringField()
     servings = IntegerField(validators=[DataRequired(), NumberRange(min=1)])
-    directions = TextAreaField(validators=[DataRequired()])
     notes = TextAreaField()
     source = StringField()
     img_url = StringField()
-    ingredients = TextAreaField(validators=[DataRequired()])

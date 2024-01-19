@@ -7,9 +7,17 @@ class RecipeIngredient(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    recipeId = db.Column(db.Integer, db.ForeignKey('recipe.id'), nullable=False)
+    recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     unit = db.Column(db.String(50), nullable=False)
     # cost = db.Column(db.Integer)
     # ingredientId = db.Column(db.Integer)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "quantity": self.quantity,
+            "unit": self.unit
+        }

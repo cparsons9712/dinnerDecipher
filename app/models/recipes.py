@@ -12,7 +12,7 @@ class Recipe(db.Model):
     prepTime = db.Column(db.String(10))
     totalTime = db.Column(db.String(10))
     servings = db.Column(db.Integer, nullable=False)
-    # directions = db.Column(db.Text, nullable=False)
+
     notes = db.Column(db.Text)
     source = db.Column(db.String(150))
     img_url = db.Column(db.String(255))
@@ -32,9 +32,9 @@ class Recipe(db.Model):
             'prepTime': self.prepTime,
             'totalTime': self.totalTime,
             'servings': self.servings,
-            'directions': self.directions,
+            'directions': [direction.to_dict() for direction in self.directions],
             'notes': self.notes,
             'source': self.source,
             'img_url': self.img_url,
-            'ingredients': self.ingredients,
+            'ingredients': [ingredient.to_dict() for ingredient in self.ingredients],
         }
