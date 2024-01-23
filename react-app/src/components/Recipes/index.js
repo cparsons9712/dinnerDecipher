@@ -27,6 +27,11 @@ function RecipeList() {
             return (
                 <div className="recipeCard">
                     <h2>{r.name}</h2>
+                    <div>
+                      <p>Cook Time: {r.totalTime} </p>
+                      <p>Servings: {r.servings}</p>
+                    </div>
+
                     <p>{r.description}</p>
                     <img src={r.img_url} className="recipeImage" alt={r.name}/>
                     <div className="ingredients">
@@ -42,8 +47,9 @@ function RecipeList() {
                                 return <li>{dir.text}</li>
                             })}
                         </ol>
-
-
+                    </div>
+                    <div>
+                        {r.source}
                     </div>
 
                 </div>
