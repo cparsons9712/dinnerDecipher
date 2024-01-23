@@ -23,6 +23,7 @@ function RecipeList() {
     return (
     <>
         <h1>Recipes</h1>
+        <button>Add New Recipe</button>
         {recipeArray.map((r)=>{
             return (
                 <div className="recipeCard">
@@ -49,7 +50,11 @@ function RecipeList() {
                         </ol>
                     </div>
                     <div>
+                        
                         {r.source}
+                    </div>
+                    <div>
+                        <button>Edit</button> <button> Delete</button>
                     </div>
 
                 </div>
