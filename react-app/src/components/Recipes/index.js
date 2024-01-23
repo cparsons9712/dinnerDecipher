@@ -17,13 +17,6 @@ function RecipeList() {
     const recipes = useSelector((state) => state.recipe)
     const recipeArray = Object.values(recipes)
 
-    const formattIngredients = (ingredients) =>{
-        return ingredients.split(';')
-
-    }
-    const formattInstructions = instr => {
-        return instr.split('.')
-    }
 
 
 
@@ -38,19 +31,19 @@ function RecipeList() {
                     <img src={r.img_url} className="recipeImage" alt={r.name}/>
                     <div className="ingredients">
                         <h3>Ingredients</h3>
-                        {formattIngredients(r.ingredients).map((r)=>{
-                            return (<li>{r}</li>)
+                        {Object.values(r.ingredients).map((ing)=>{
+                            return <div>{ing.quantity} {ing.unit} {ing.name}</div>
                         })}
                     </div>
                     <div className="instructions">
-                        <h3>Instructions</h3>
+                        <h3>Directions</h3>
                         <ol>
-                            {formattInstructions(r.directions).map((i)=>{
-                                return <li>{i}</li>
+                            {Object.values(r.directions).map((dir)=>{
+                                return <li>{dir.text}</li>
                             })}
                         </ol>
 
-                        
+
                     </div>
 
                 </div>
