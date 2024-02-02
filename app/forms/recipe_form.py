@@ -13,3 +13,4 @@ class RecipeForm(FlaskForm):
     notes = TextAreaField()
     source = StringField()
     img_url = StringField()
+    
