@@ -21,9 +21,17 @@ def all_recipes():
 def create_recipe():
     """
     Create a new database instance of a recipe.
+
+    PAYLOAD:
+    {"name": STR, "description": STR, "totalTime": STR, "prepTime":STR,"servings": INT,
+    "notes": STR, "source": STR, "img_url":STR
+    "directions": [{"step": INT, "text": STR},],
+    "ingredients": [{"name": STR, "quantity": INT, "unit": STR},]
+    }
     """
     # recieve the payload from the request
     data = request.json
+    print(data)
     #
     recipe_form = RecipeForm(data=data)
     recipe_form['csrf_token'].data = request.cookies['csrf_token']
