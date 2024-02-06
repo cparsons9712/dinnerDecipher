@@ -66,18 +66,19 @@ def create_recipe():
 
         # # Create new recipeIngredient instance for each ingredient in payload
         # ingredients_data = data.get('ingredients')
-        # if ingredients_data:
+        if ingredientsArr:
         #     # loop through all the ingredients in the ingredients chunk sent in payload
-        #     for ingredient_data in ingredients_data:
+             for ingredient_data in ingredientsArr:
         #         # send each individual ingredient into the flask form for validation
-        #         ingredient_form = RecipeIngredientForm(data=ingredient_data)
-        #         if ingredient_form.validate():
+                 ingredient_form = RecipeIngredientForm(data=ingredient_data)
+                 ingredient_form['csrf_token'].data = request.cookies['csrf_token']
+                 if ingredient_form.validate():
         #             # Make a new database instance if the data set passes validations
-        #             ingredient = RecipeIngredient(**ingredient_data, recipe=recipe)
-        #             db.session.add(ingredient)
-        #         else:
-        #             # return the errors to frontend if it doesnt validate
-        #             return jsonify({'errors': ingredient_form.errors}), 400
+                     ingredient = RecipeIngredient(**ingredient_data, recipe=recipe)
+                     db.session.add(ingredient)
+                 else:
+                     # return the errors to frontend if it doesnt validate
+                     return jsonify({'errors': ingredient_form.errors}), 400
 
         # save the changes made to the database and return the new recipe in json formatt
         db.session.commit()
