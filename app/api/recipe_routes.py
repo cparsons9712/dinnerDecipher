@@ -50,18 +50,19 @@ def create_recipe():
 
         #Creating new direction instances for each direction for recipe in payload
         # directions_data = data.get('directions')
-        # if directions_data:
+        if directionsArr:
         #     # loop through every step in the set of directions
-        #     for step_data in directions_data:
+             for step_data in directionsArr:
         #         # send threw flaskForm
-        #         direction_form = DirectionForm(data=directions_data)
-        #         if direction_form.validate():
+                direction_form = DirectionForm(data=step_data)
+                direction_form['csrf_token'].data = request.cookies['csrf_token']
+                if direction_form.validate():
         #             # in the case of no validation errors, create a new DB instance
-        #             step = Direction(**step_data, recipe=recipe)
-        #             db.session.add(step)
-        #         else:
+                     step = Direction(**step_data, recipe=recipe)
+                     db.session.add(step)
+                else:
         #             # in case a step of the directions throws a validation error
-        #             return jsonify({'errors': direction_form.errors}), 400
+                    return jsonify({'errors': direction_form.errors}), 400
 
         # # Create new recipeIngredient instance for each ingredient in payload
         # ingredients_data = data.get('ingredients')
