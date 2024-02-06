@@ -29,49 +29,54 @@ def create_recipe():
     "ingredients": [{"name": STR, "quantity": INT, "unit": STR},]
     }
     """
-    # recieve the payload from the request
+    # get the directions and ingredients data out of the request so that we can loop and create instances of each
     data = request.json
-    print(data)
+    directionsArr = data['directions'] if data else None
+    ingredientsArr = data['ingredients'] if data else None
+
     #
-    recipe_form = RecipeForm(data=data)
+    recipe_form = RecipeForm()
+
     recipe_form['csrf_token'].data = request.cookies['csrf_token']
 
     if recipe_form.validate_on_submit():
         # Creating the new recipe instance with data from request
         recipe = Recipe()
+
+        print(recipe_form.data)
         recipe_form.populate_obj(recipe)
         recipe.user_id = current_user.id
         db.session.add(recipe)
 
         #Creating new direction instances for each direction for recipe in payload
-        directions_data = data.get('directions')
-        if directions_data:
-            # loop through every step in the set of directions
-            for step_data in directions_data:
-                # send threw flaskForm
-                direction_form = DirectionForm(data=directions_data)
-                if direction_form.validate():
-                    # in the case of no validation errors, create a new DB instance
-                    step = Direction(**step_data, recipe=recipe)
-                    db.session.add(step)
-                else:
-                    # in case a step of the directions throws a validation error
-                    return jsonify({'errors': direction_form.errors}), 400
+        # directions_data = data.get('directions')
+        # if directions_data:
+        #     # loop through every step in the set of directions
+        #     for step_data in directions_data:
+        #         # send threw flaskForm
+        #         direction_form = DirectionForm(data=directions_data)
+        #         if direction_form.validate():
+        #             # in the case of no validation errors, create a new DB instance
+        #             step = Direction(**step_data, recipe=recipe)
+        #             db.session.add(step)
+        #         else:
+        #             # in case a step of the directions throws a validation error
+        #             return jsonify({'errors': direction_form.errors}), 400
 
-        # Create new recipeIngredient instance for each ingredient in payload
-        ingredients_data = data.get('ingredients')
-        if ingredients_data:
-            # loop through all the ingredients in the ingredients chunk sent in payload
-            for ingredient_data in ingredients_data:
-                # send each individual ingredient into the flask form for validation
-                ingredient_form = RecipeIngredientForm(data=ingredient_data)
-                if ingredient_form.validate():
-                    # Make a new database instance if the data set passes validations
-                    ingredient = RecipeIngredient(**ingredient_data, recipe=recipe)
-                    db.session.add(ingredient)
-                else:
-                    # return the errors to frontend if it doesnt validate
-                    return jsonify({'errors': ingredient_form.errors}), 400
+        # # Create new recipeIngredient instance for each ingredient in payload
+        # ingredients_data = data.get('ingredients')
+        # if ingredients_data:
+        #     # loop through all the ingredients in the ingredients chunk sent in payload
+        #     for ingredient_data in ingredients_data:
+        #         # send each individual ingredient into the flask form for validation
+        #         ingredient_form = RecipeIngredientForm(data=ingredient_data)
+        #         if ingredient_form.validate():
+        #             # Make a new database instance if the data set passes validations
+        #             ingredient = RecipeIngredient(**ingredient_data, recipe=recipe)
+        #             db.session.add(ingredient)
+        #         else:
+        #             # return the errors to frontend if it doesnt validate
+        #             return jsonify({'errors': ingredient_form.errors}), 400
 
         # save the changes made to the database and return the new recipe in json formatt
         db.session.commit()
