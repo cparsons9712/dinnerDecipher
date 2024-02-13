@@ -34,7 +34,6 @@ def create_recipe():
     directionsArr = data['directions'] if data else None
     ingredientsArr = data['ingredients'] if data else None
 
-    #
     recipe_form = RecipeForm()
 
     recipe_form['csrf_token'].data = request.cookies['csrf_token']
@@ -43,7 +42,7 @@ def create_recipe():
         # Creating the new recipe instance with data from request
         recipe = Recipe()
 
-        print(recipe_form.data)
+
         recipe_form.populate_obj(recipe)
         recipe.user_id = current_user.id
         db.session.add(recipe)
@@ -90,20 +89,62 @@ def create_recipe():
 @login_required
 def update_recipe(recipe_id):
     """
-    Updates an instance of a recipe in the database
+    Update an existing recipe instance.
+
+    PAYLOAD:
+    {"name": STR, "description": STR, "totalTime": STR, "prepTime":STR,"servings": INT,
+    "notes": STR, "source": STR, "img_url":STR
+    "directions": [{"id": INT, "step": INT, "text": STR},],
+    "ingredients": [{"id": INT, "name": STR, "quantity": INT, "unit": STR},]
+    }
     """
-    form = RecipeForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    recipe = Recipe.query.get_or_404(recipe_id)
+    recipe = Recipe.query.get(recipe_id)
+    if not recipe:
+        return jsonify({'error': 'Recipe not found'}), 404
 
-    if form.validate_on_submit():
+    # Getting all request data for directions or ingredients
+    data = request.json
+    directionsArr = data.get('directions', [])
+    ingredientsArr = data.get('ingredients', [])
 
-        form.populate_obj(recipe)
-        recipe.user_id = current_user.id
-        db.session.add(recipe)
+    recipe_form = RecipeForm()
+
+    recipe_form['csrf_token'].data = request.cookies['csrf_token']
+
+    if recipe_form.validate_on_submit():
+        recipe_form.populate_obj(recipe)
+
+        # Update directions
+        for direction_data in directionsArr:
+            direction_id = direction_data.get('id')
+            if direction_id:
+                direction = Direction.query.get(direction_id)
+                if direction:
+                    direction.step = direction_data.get('step')
+                    direction.text = direction_data.get('text')
+                else:
+                    return jsonify({'error': f'Direction with id {direction_id} not found'}), 404
+            else:
+                return jsonify({'error': 'Direction id missing'}), 400
+
+        # Update ingredients
+        for ingredient_data in ingredientsArr:
+            ingredient_id = ingredient_data.get('id')
+            if ingredient_id:
+                ingredient = RecipeIngredient.query.get(ingredient_id)
+                if ingredient:
+                    ingredient.name = ingredient_data.get('name')
+                    ingredient.quantity = ingredient_data.get('quantity')
+                    ingredient.unit = ingredient_data.get('unit')
+                else:
+                    return jsonify({'error': f'Ingredient with id {ingredient_id} not found'}), 404
+            else:
+                return jsonify({'error': 'Ingredient id missing'}), 400
+
         db.session.commit()
-        return recipe.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return jsonify({'message': 'Recipe updated successfully'})
+
+    return jsonify({'errors': validation_errors_to_error_messages(recipe_form.errors)}), 400
 
 @recipe_routes.route('<recipe_id>', methods=['DELETE'])
 @login_required
