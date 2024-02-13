@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, session, request, abort
 from flask_login import login_required
 from flask_login import current_user, login_required
 from app.models import Recipe, Direction, RecipeIngredient, db
@@ -85,7 +85,7 @@ def create_recipe():
     # if there are errors with the recipe flask form validations return those to the frontend
     return {'errors': validation_errors_to_error_messages(recipe_form.errors)}, 401
 
-@recipe_routes.route('<recipe_id>', methods=['PUT'])
+@recipe_routes.route('/<recipe_id>', methods=['PUT'])
 @login_required
 def update_recipe(recipe_id):
     """
@@ -146,16 +146,17 @@ def update_recipe(recipe_id):
 
     return jsonify({'errors': validation_errors_to_error_messages(recipe_form.errors)}), 400
 
-@recipe_routes.route('<recipe_id>', methods=['DELETE'])
+@recipe_routes.route('/<recipe_id>', methods=['DELETE'])
 @login_required
 def delete_recipe(recipe_id):
     """
     Removes a recipe from the database
     """
-    recipe = Recipe.query.filter(Recipe.id == recipe_id).first()
+    recipe = Recipe.query.get(recipe_id)
     if recipe is None:
-        return {'errors': {'Not Found': 'A task with this id could not be located'}}, 404
+        abort(404, description="Recipe not found")
+
     db.session.delete(recipe)
     db.session.commit()
 
-    return {'message': 'Recipe deleted!'}
+    return jsonify({'message': 'Recipe deleted!'})
