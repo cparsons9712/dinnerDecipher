@@ -32,9 +32,9 @@ class Recipe(db.Model):
             'prepTime': self.prepTime,
             'totalTime': self.totalTime,
             'servings': self.servings,
-            'directions': [direction.to_dict() for direction in self.directions],
             'notes': self.notes,
             'source': self.source,
             'img_url': self.img_url,
             'ingredients': [ingredient.to_dict() for ingredient in self.ingredients],
+            'directions': [direction.to_dict() for direction in self.directions]
         }
