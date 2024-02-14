@@ -17,20 +17,47 @@ function CreateUpdateRecipe(recipe) {
     const [img_url, setImg_Url] = useState(recipe?.img_url)
 
 
-    useEffect (()=>{
-        // trigger the data retrieval from the backend to go into the store
-        dispatch(getRecipes())
-    }, [dispatch])
+    const onSubmit = () => {
 
-    // save the data in the store to a variable we can use.
-    const recipes = useSelector((state) => state.recipe)
-    const recipeArray = Object.values(recipes)
+    }
 
+    const addIngredientField = () => {
+        return <form>
+                <label>
+                Ingredient Name
+                <input
+                    type="text"
+                    value={temp}
+                    onChange={(e) => setTemp(e.target.value)}
+                    required
+                />
+                </label>
+                <label>
+                Ingredient Amount
+                <input
+                    type="text"
+                    value={temp}
+                    onChange={(e) => setTemp(e.target.value)}
+                    required
+                />
+                </label>
+                <label>
+                Ingredient Unit Type
+                <input
+                    type="text"
+                    value={temp}
+                    onChange={(e) => setTemp(e.target.value)}
+                    required
+                />
+                </label>
 
+            </form>
 
+    }
 
     return (
     <>
+    <form onSubmit={onSubmit}>
         <h1>{recipe? 'Update' : 'Create'} Recipe</h1>
 
 
@@ -109,8 +136,16 @@ function CreateUpdateRecipe(recipe) {
         </label>
 
 
+        <h3>Ingredients</h3>
+        <button onClick={addIngredientField}>Add Ingredient</button>
 
+        <h3>Directions</h3>
+        <button>Add Direction Step</button>
 
+        <button>Save</button>
+        <button>Cancel</button>
+
+    </form>
 
     </>
 
