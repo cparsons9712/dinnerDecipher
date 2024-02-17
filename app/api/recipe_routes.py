@@ -146,16 +146,30 @@ def update_recipe(recipe_id):
         # Update ingredients
         for ingredient_data in ingredientsArr:
             ingredient_id = ingredient_data.get('id')
+
+            # This is a prexisting ingredient we are changing
             if ingredient_id:
+                # Get the db instance of the ingredient
                 ingredient = RecipeIngredient.query.get(ingredient_id)
                 if ingredient:
+                    # update the values
                     ingredient.name = ingredient_data.get('name')
                     ingredient.quantity = ingredient_data.get('quantity')
                     ingredient.unit = ingredient_data.get('unit')
                 else:
+                    # this error for when theres an id, indicating the ingredient exist but we ran into an issue getting the actual database record
                     return jsonify({'error': f'Ingredient with id {ingredient_id} not found'}), 404
             else:
-                return jsonify({'error': 'Ingredient id missing'}), 400
+                # If theres no ID then we are adding a new ingredient into the recipe
+                 ingredient_form = RecipeIngredientForm(data=ingredient_data)
+                 ingredient_form['csrf_token'].data = request.cookies['csrf_token']
+                 if ingredient_form.validate():
+        #             # Make a new database instance if the data set passes validations
+                     ingredient = RecipeIngredient(**ingredient_data, recipe=recipe)
+                     db.session.add(ingredient)
+                 else:
+                     # return the errors to frontend if it doesnt validate
+                     return jsonify({'errors': ingredient_form.errors}), 400
 
         db.session.commit()
         return jsonify({'message': 'Recipe updated successfully'})
