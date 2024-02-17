@@ -170,10 +170,10 @@ def update_recipe(recipe_id):
                  else:
                      # return the errors to frontend if it doesnt validate
                      return jsonify({'errors': ingredient_form.errors}), 400
-
+        # save the changes to the database and return a success message
         db.session.commit()
         return jsonify({'message': 'Recipe updated successfully'})
-
+    # return any errors from the creation of the recipe to the frontend
     return jsonify({'errors': validation_errors_to_error_messages(recipe_form.errors)}), 400
 
 @recipe_routes.route('/<recipe_id>', methods=['DELETE'])
