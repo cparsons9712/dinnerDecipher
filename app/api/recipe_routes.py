@@ -98,6 +98,7 @@ def update_recipe(recipe_id):
     "ingredients": [{"id": INT, "name": STR, "quantity": INT, "unit": STR},]
     }
     """
+    # find the db instance of the recipe to update
     recipe = Recipe.query.get(recipe_id)
     if not recipe:
         return jsonify({'error': 'Recipe not found'}), 404
@@ -107,25 +108,40 @@ def update_recipe(recipe_id):
     directionsArr = data.get('directions', [])
     ingredientsArr = data.get('ingredients', [])
 
+    # initialize a form for the recipe to validate data
     recipe_form = RecipeForm()
 
     recipe_form['csrf_token'].data = request.cookies['csrf_token']
 
+    # check if the data validated and update the db instance if so
     if recipe_form.validate_on_submit():
         recipe_form.populate_obj(recipe)
 
         # Update directions
         for direction_data in directionsArr:
+            # try to grab the id of the direction
             direction_id = direction_data.get('id')
             if direction_id:
+                # if it exist grab the db instance
                 direction = Direction.query.get(direction_id)
                 if direction:
+                    # update the preexisting direction
                     direction.step = direction_data.get('step')
                     direction.text = direction_data.get('text')
                 else:
+                    #if theres an ID but the direction cant be found throw an error
                     return jsonify({'error': f'Direction with id {direction_id} not found'}), 404
             else:
-                return jsonify({'error': 'Direction id missing'}), 400
+                #if there is no id (it never existed so we are adding new steps into the recipe) then we need to create a new instance
+                direction_form = DirectionForm(data=direction_data)
+                direction_form['csrf_token'].data = request.cookies['csrf_token']
+                if direction_form.validate():
+        #             # in the case of no validation errors, create a new DB instance
+                     step = Direction(**direction_data, recipe=recipe)
+                     db.session.add(step)
+                else:
+        #             # in case a step of the directions throws a validation error
+                    return jsonify({'errors': direction_form.errors}), 400
 
         # Update ingredients
         for ingredient_data in ingredientsArr:
