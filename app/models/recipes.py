@@ -20,8 +20,8 @@ class Recipe(db.Model):
 
     #Relationships
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    directions = db.relationship('Direction', backref='recipe')
-    ingredients = db.relationship('RecipeIngredient', backref = 'recipe')
+    directions = db.relationship('Direction', backref='recipe', lazy=True, cascade="all, delete-orphan")
+    ingredients = db.relationship('RecipeIngredient', backref = 'recipe', lazy=True, cascade="all, delete-orphan")
 
 
     def to_dict(self):

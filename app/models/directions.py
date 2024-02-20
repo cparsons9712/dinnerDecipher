@@ -8,7 +8,7 @@ class Direction(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     step = db.Column(db.Integer)
-    recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
+    recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id', ondelete="CASCADE"), nullable=False)
     text = db.Column(db.String(255), nullable=False)
 
     def to_dict(self):

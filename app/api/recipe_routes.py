@@ -172,7 +172,7 @@ def update_recipe(recipe_id):
                      return jsonify({'errors': ingredient_form.errors}), 400
         # save the changes to the database and return a success message
         db.session.commit()
-        return jsonify({'message': 'Recipe updated successfully'})
+        return recipe.to_dict()
     # return any errors from the creation of the recipe to the frontend
     return jsonify({'errors': validation_errors_to_error_messages(recipe_form.errors)}), 400
 
@@ -190,3 +190,18 @@ def delete_recipe(recipe_id):
     db.session.commit()
 
     return jsonify({'message': 'Recipe deleted!'})
+
+@recipe_routes.route('ingredient/<ingredient_id>', methods=['DELETE'])
+@login_required
+def delete_recipeIngredient(ingredient_id):
+    """
+    Removes an ingredient from a recipe
+    """
+    ingredient = RecipeIngredient.query.get(ingredient_id)
+    if ingredient is None:
+        abort(404, description="Ingredient not found")
+
+    db.session.delete(ingredient)
+    db.session.commit()
+
+    return jsonify({'message': 'Ingredient deleted from Recipe!'})
